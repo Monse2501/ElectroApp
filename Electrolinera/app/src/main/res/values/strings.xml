@@ -1,11 +1,29 @@
 <resources>
     <string name="app_name">Electrolinera</string>
 
+    <!--Cadenas para la Pantalla de Iniciar Sesion -->
     <string name="UsuarioLogin">Correo</string>
     <string name="ContraseniaLogin">Contraseña</string>
     <string name="RecuperarContraseniaLogin">¿Has olvidado tu contraseña?</string>
     <string name="IniciarSesion">Iniciar Sesión</string>
     <string name="RegistroLogin">Regístrate</string>
+
+    <!--Cadenas para la Pantalla de Registro-->
+    <string name="NombreUsuario">Nombre</string>
+    <string name="ApellidoPaterno">Apellido Paterno</string>
+    <string name="ApellidoMaterno">Apellido Materno</string>
+    <string name="CorreoRegistro">Correo</string>
+    <string name="ContraseniaRegistro">Contraseña</string>
+    <string name="RepetirContraseniaRegistro">Repetir contraseña</string>
+    <string name="FechaNacimientoRegistro">Fecha de nacimiento</string>
+    <string name="GeneroRegistro">Género</string>
+    <string name="EstadoRegistro">Estado</string>
+
+
+
     <string name="action_settings">Settings</string>
     <string name="title_activity_iniciar_sesion">IniciarSesion</string>
+    <string name="title_activity_registro">Registro</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

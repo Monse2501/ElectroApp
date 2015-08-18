@@ -27,6 +27,11 @@ public class Usuario {
 		this.auto = auto;
 	}
 
+	public Usuario(String contrasenia, String email) {
+		this.contrasenia = contrasenia;
+		this.email = email;
+	}
+
 	/******************************************************************************/
 	/****** Métodos para agregar o modificar la información de los usuarios *******/
 	/******************************************************************************/

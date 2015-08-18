@@ -47,10 +47,47 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
         protected Usuario doInBackground(Void... params) {
             ArrayList<NameValuePair> datosUsuario = new ArrayList<>();
             datosUsuario.add(new BasicNameValuePair("email", usuario.email));
-            datosUsuario.add(new BasicNameValuePair(""));
+            datosUsuario.add(new BasicNameValuePair("contrasena", usuario.contrasenia));
+            conexionIniciarSesion.Conexion("iniciarSesion.php");
 
-            return null;
+            Usuario returnedUsuario = null;
+
+            try{
+                conexionIniciarSesion.post.setEntity(new UrlEncodedFormEntity(datosUsuario));
+                HttpResponse httpResponse = conexionIniciarSesion.client.execute(conexionIniciarSesion.post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                String result = EntityUtils.toString(entity);
+                JSONObject jObject = new JSONObject(result);
+
+                if(jObject.length()== 0){
+                    returnedUsuario = null;
+                }else{
+                    int respuesta = jObject.getInt("success");
+                    if(respuesta == 1)
+                    {
+                        returnedUsuario = new Usuario(usuario.email,usuario.contrasenia);
+                    }else
+                    {
+                        returnedUsuario = null;
+                    }
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+            return returnedUsuario;
         }
+
+        @Override
+        protected void onPostExecute(Usuario returnedUser) {
+            conexionIniciarSesion.progressDialog.dismiss();
+            userCallback.done(returnedUser);
+            super.onPostExecute(returnedUser);
+        }
+
+
     }
 
 

@@ -18,6 +18,9 @@ public class ConexionServerPHP {
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
     public static final String SERVER_ADDRESS = "http://www.pruebitas-cfe.site40.net/";
     public String nombreServicio = "";
+    HttpParams httpRequestParams;
+    HttpClient client;
+    HttpPost post;
 
     public ConexionServerPHP(Context context){
         progressDialog = new ProgressDialog(context);
@@ -28,11 +31,12 @@ public class ConexionServerPHP {
 
     public void Conexion(String nombreServicio)
     {
-        HttpParams httpRequestParams = new BasicHttpParams();
+        this.nombreServicio=nombreServicio;
+        httpRequestParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
         HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
-        HttpClient client = new DefaultHttpClient(httpRequestParams);
-        HttpPost post = new HttpPost(SERVER_ADDRESS + nombreServicio);
+        client = new DefaultHttpClient(httpRequestParams);
+        post = new HttpPost(SERVER_ADDRESS + nombreServicio);
     }
 
 

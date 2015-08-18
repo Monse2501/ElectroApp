@@ -20,6 +20,10 @@
             android:name=".IniciarSesion"
             android:label="@string/title_activity_iniciar_sesion" >
         </activity>
+        <activity
+            android:name=".Registro"
+            android:label="@string/title_activity_registro" >
+        </activity>
     </application>
 
 </manifest>

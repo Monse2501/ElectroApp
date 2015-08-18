@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Electrolinera</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="UsuarioLogin">Correo</string>
+    <string name="ContraseniaLogin">Contraseña</string>
+    <string name="RecuperarContraseniaLogin">¿Has olvidado tu contraseña?</string>
+    <string name="IniciarSesion">Iniciar Sesión</string>
+    <string name="RegistroLogin">Regístrate</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_iniciar_sesion">IniciarSesion</string>
 </resources>

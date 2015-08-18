@@ -47,7 +47,7 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
         protected Usuario doInBackground(Void... params) {
             ArrayList<NameValuePair> datosUsuario = new ArrayList<>();
             datosUsuario.add(new BasicNameValuePair("email", usuario.email));
-            datosUsuario.add(new )
+            datosUsuario.add(new BasicNameValuePair(""));
 
             return null;
         }

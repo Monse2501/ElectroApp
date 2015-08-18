@@ -9,8 +9,12 @@ public class Comentario {
 	Usuario usuario;	//Usuario que envió el comentario
 
 	//Constructor de la clase
-	public Comentario() {
+	public Comentario(String comentario, String titulo, Date fecha, Usuario usuario) {
 		// TODO Auto-generated constructor stub
+		this.comentario = comentario;
+		this.titulo = titulo;
+		this.fecha = fecha;
+		this.usuario = usuario;
 	}
 	
 	/*********************************************************************************/

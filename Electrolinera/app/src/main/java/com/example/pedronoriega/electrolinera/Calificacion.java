@@ -5,8 +5,9 @@ public class Calificacion {
 	Electrolinera electrolinera; //Guarda la información de la electrolinera a la que está asociada
 
 	//Constructor de la clase
-	public Calificacion() {
-
+	public Calificacion(int calificacion, Electrolinera electrolinera) {
+		this.calificacion = calificacion;
+		this.electrolinera = electrolinera;
 	}
 
 	//Método para asignar la calificación

@@ -11,8 +11,15 @@ public class Electrolinera {
 	int codigoPostal;	//Código postal de electrolinera
 	
 	//Constructor de la clase electrolinera
-	public Electrolinera() {
-		
+	public Electrolinera(String nombre, float latitud, float longitud, String direccion, String marca, String estado, float precio, int codigoPostal) {
+		this.nombre = nombre;
+		this.latitud = latitud;
+		this.longitud = longitud;
+		this.direccion = direccion;
+		this.marca = marca;
+		this.estado = estado;
+		this.precio = precio;
+		this.codigoPostal = codigoPostal;
 	}
 	
 	/******************************************************************************/

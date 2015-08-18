@@ -1,5 +1,7 @@
 package com.example.pedronoriega.electrolinera;
 
+import java.util.Date;
+
 public class ElectrolineraEliminado {
 	String nombre;		//Nombre de electrolinera
 	float latitud;		//Latitud de su ubicación
@@ -8,12 +10,20 @@ public class ElectrolineraEliminado {
 	String marca;		//Marca de electrolinera
 	String estado;		//Estado donde se encuentra la electrolinera
 	Estacion estacion;	//Información de las estaciones de la electrolinera
-	String fechaDeEliminacion; 	//Guarda la fecha en la que se eliminó la electrolinera
+	Date fechaDeEliminacion; 	//Guarda la fecha en la que se eliminó la electrolinera
 	String motivo; 		//El motivo de la eliminación de electrolinera
 
 	//Constructor de la clase electrolinera
-	public ElectrolineraEliminado() {
-		
+	public ElectrolineraEliminado(String nombre, float latitud, float longitud, String direccion, String marca, String estado, Estacion estacion, Date fechaDeEliminacion, String motivo) {
+		this.nombre = nombre;
+		this.latitud = latitud;
+		this.longitud = longitud;
+		this.direccion = direccion;
+		this.marca = marca;
+		this.estado = estado;
+		this.estacion = estacion;
+		this.fechaDeEliminacion = fechaDeEliminacion;
+		this.motivo = motivo;
 	}
 	
 	/**************************************************************************************/
@@ -56,7 +66,7 @@ public class ElectrolineraEliminado {
 	}
 	
 	//Método para asignar la fecha de eliminación de una electrolinera
-	public void setFechaDeEliminacion(String fechaDeEliminacion){
+	public void setFechaDeEliminacion(Date fechaDeEliminacion){
 		this.fechaDeEliminacion = fechaDeEliminacion;
 	}
 	
@@ -106,7 +116,7 @@ public class ElectrolineraEliminado {
 	}
 	
 	//Método para obtener la fecha de eliminación de una electrolinera
-	public String getFechaDeEliminacion(){
+	public Date getFechaDeEliminacion(){
 		return fechaDeEliminacion;
 	}
 	

@@ -12,12 +12,21 @@ public class Usuario {
 	String email;			//Email del usuario
 	String tipoUsuario;		//Tipo de usuario (Arquitecto, Neo, Morpheo, Noticias, Cliente)
 	Automovil auto;			//Automóviles que posee el usuario
-	
-	//Constructor de la clase
-	public Usuario() {
-		// TODO Auto-generated constructor stub
+
+	public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String genero, int edad, String estado, Fotografia fotografia, String contrasenia, String email, String tipoUsuario, Automovil auto) {
+		this.nombre = nombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.genero = genero;
+		this.edad = edad;
+		this.estado = estado;
+		this.fotografia = fotografia;
+		this.contrasenia = contrasenia;
+		this.email = email;
+		this.tipoUsuario = tipoUsuario;
+		this.auto = auto;
 	}
-	
+
 	/******************************************************************************/
 	/****** Métodos para agregar o modificar la información de los usuarios *******/
 	/******************************************************************************/

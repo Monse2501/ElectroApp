@@ -9,8 +9,14 @@ public class TarjetaDeCredito {
 	Usuario usuario;			//Dueño de la tarjeta
 	
 	//Constructor de la clase
-	public TarjetaDeCredito() {
+	public TarjetaDeCredito(String digitosTarjeta, int ccv, String tipoTarjeta, String banco, String fechaDeExpiracion, Usuario usuario) {
 		// TODO Auto-generated constructor stub
+		this.digitosTarjeta = digitosTarjeta;
+		this.ccv = ccv;
+		this.tipoTarjeta = tipoTarjeta;
+		this.banco = banco;
+		this.fechaDeExpiracion = fechaDeExpiracion;
+		this.usuario = usuario;
 	}
 	
 	/*********************************************************************************/

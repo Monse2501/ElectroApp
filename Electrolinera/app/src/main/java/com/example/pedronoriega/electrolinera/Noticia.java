@@ -9,8 +9,13 @@ public class Noticia {
 	Usuario usuario;	//Usuario que la publicó
 	
 	//Constructor de la clase
-	public Noticia() {
-
+	public Noticia(String noticia, String fecha, String fuente, String titulo, Fotografia fotografia, Usuario usuario) {
+		this.noticia = noticia;
+		this.fecha = fecha;
+		this.fuente = fuente;
+		this.titulo = titulo;
+		this.fotografia = fotografia;
+		this.usuario = usuario;
 	}
 	
 	/*********************************************************************************/

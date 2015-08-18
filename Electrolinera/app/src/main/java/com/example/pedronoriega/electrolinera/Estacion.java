@@ -7,8 +7,11 @@ public class Estacion {
 	Electrolinera electrolinera;	//Electrolinera que está asociada a la estación de carga
 	
 	//Constructor de la clase
-	public Estacion() {
-		
+	public Estacion(String nivel, String estadoDisponibilidad, String clasificacion, Electrolinera electrolinera) {
+		this.nivel = nivel;
+		this.estadoDisponibilidad = estadoDisponibilidad;
+		this.clasificacion = clasificacion;
+		this.electrolinera = electrolinera;
 	}
 	
 	/*********************************************************************************/

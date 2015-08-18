@@ -7,8 +7,11 @@ public class Fotografia {
 	String tipoFoto;		//Es la extensi�n de la foto (PNG, JPG, JPEG) 
 	
 	//Constructor de la clase
-	public Fotografia() {
-		
+	public Fotografia(String nombreFoto, int ancho, int alto, String tipoFoto) {
+		this.nombreFoto = nombreFoto;
+		this.ancho = ancho;
+		this.alto = alto;
+		this.tipoFoto = tipoFoto;
 	}
 
 	/******************************************************************************/

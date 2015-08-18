@@ -13,10 +13,19 @@ public class UsuarioEliminado {
 	Date fechaDeEliminacion; //Fecha en la que el usuario se eliminó su cuenta
 	
 	//Constructor de la clase
-	public UsuarioEliminado() {
-		
+
+	public UsuarioEliminado(String nombre, String apellidoPaterno, String apellidoMaterno, String genero, int edad, String estado, String tipoUsuario, Date fechaDeEliminacion) {
+		this.nombre = nombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.genero = genero;
+		this.edad = edad;
+		this.estado = estado;
+		this.tipoUsuario = tipoUsuario;
+		this.fechaDeEliminacion = fechaDeEliminacion;
 	}
-		
+
+
 	/********************************************************************************/
 	/** Métodos para agregar o modificar la información de los usuarios eliminados **/
 	/********************************************************************************/

@@ -8,8 +8,12 @@ public class Automovil {
 	Usuario usuario;//Guarda al dueño del automóvil
 	
 	//Constructor de la clase
-	public Automovil() {
-		
+	public Automovil(String modelo, String tipo, String marca, int anio, Usuario usuario) {
+		this.modelo = modelo;
+		this.tipo = tipo;
+		this.marca = marca;
+		this.anio = anio;
+		this.usuario = usuario;
 	}
 	
 	/******************************************************************************/

@@ -13,6 +13,7 @@ public class AutomovilEliminado {
 	//Constructor de la clase
 	public AutomovilEliminado(String modelo) {
 		this.modelo = modelo;
+		fgklsdfjgkjsñdfgkjsñdlfkgjsdñlfkgjsñldfkg
 	}
 	
 	/******************************************************************************/

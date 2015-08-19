@@ -14,6 +14,8 @@ public class Automovil {
 		this.marca = marca;
 		this.anio = anio;
 		this.usuario = usuario;
+
+
 	}
 	
 	/******************************************************************************/

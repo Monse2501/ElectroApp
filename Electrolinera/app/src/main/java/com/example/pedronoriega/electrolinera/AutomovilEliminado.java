@@ -11,7 +11,8 @@ public class AutomovilEliminado {
 	Date fechaDeEliminacion; //Fecha de eliminación del automóvil
 	
 	//Constructor de la clase
-	public AutomovilEliminado() {
+	public AutomovilEliminado(String modelo) {
+		this.modelo = modelo;
 		
 	}
 	

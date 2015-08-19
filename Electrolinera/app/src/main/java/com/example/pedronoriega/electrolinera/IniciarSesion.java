@@ -41,10 +41,35 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
 
 
                 Usuario usuario = new Usuario(correo, contrasenia);
+                authenticate(usuario);
 
                 break;
         }
     }
 
+    private void authenticate(Usuario usuario){
+        WSIniciarSesion serverIniciarSesion = new WSIniciarSesion(this);
+        serverIniciarSesion.iniciarSesionInBackground(usuario, new GetUserCallback() {
+            @Override
+            public void done(Usuario returnedUsuario) {
+                if(returnedUsuario == null){
+                    showErrorMessage();
+                }else{
+                    logUserIn(returnedUsuario);
+                }
+            }
+        });
+    }
 
+    private void showErrorMessage(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(IniciarSesion.this);
+        dialogBuilder.setMessage("Incorrect user details");
+        dialogBuilder.setPositiveButton("Ok", null);
+        dialogBuilder.show();
+    }
+
+    private void logUserIn(Usuario returnedUser){
+
+        startActivity(new Intent(this,MainActivity.class));
+    }
 }

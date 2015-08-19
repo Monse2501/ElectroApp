@@ -25,7 +25,7 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
     //ConexionServerPHP conexionIniciarSesion;
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://www.envamapa.site11.com/Servicios/";
+    public static final String SERVER_ADDRESS = "http://www.monsesita-cfe.net84.net/";
     public String nombreServicio = "";
     Context context;
 
@@ -86,7 +86,7 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
                     returnedUsuario = null;
                     //Toast.makeText(context,"error",Toast.LENGTH_LONG).show();
                 }else{
-                    String email = jObject.getString("email");
+                    String email = jObject.getString("correo");
 //                    Toast.makeText(context,email,Toast.LENGTH_LONG).show();
                     returnedUsuario = new Usuario(email,usuario.contrasenia);
                     System.out.println(returnedUsuario.email);

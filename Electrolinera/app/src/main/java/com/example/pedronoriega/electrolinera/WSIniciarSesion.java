@@ -3,6 +3,7 @@ package com.example.pedronoriega.electrolinera;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -21,15 +22,27 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class WSIniciarSesion { //clase para conexion con el servicio php iniciarSesion.php
-    ConexionServerPHP conexionIniciarSesion;
+    //ConexionServerPHP conexionIniciarSesion;
+    ProgressDialog progressDialog;
+    public static final int CONNECTION_TIMEOUT = 1000 * 15;
+    public static final String SERVER_ADDRESS = "http://www.pruebitas-cfe.site40.net/";
+    public String nombreServicio = "";
+    Context context;
 
     public WSIniciarSesion(Context context)
     {
-        conexionIniciarSesion = new ConexionServerPHP(context);
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Processing");
+        progressDialog.setMessage("Please wait...");
+        this.context = context;
+        //conexionIniciarSesion = new ConexionServerPHP(context);
     }
 
     public void iniciarSesionInBackground(Usuario usuario, GetUserCallback userCallback){
-       conexionIniciarSesion.progressDialog.show();
+       //conexionIniciarSesion.progressDialog.show();
+        progressDialog.show();
+        new IniciarSesionAsyncTask(usuario, userCallback).execute();
 
     }
 
@@ -48,13 +61,21 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
             ArrayList<NameValuePair> datosUsuario = new ArrayList<>();
             datosUsuario.add(new BasicNameValuePair("email", usuario.email));
             datosUsuario.add(new BasicNameValuePair("contrasena", usuario.contrasenia));
-            conexionIniciarSesion.Conexion("iniciarSesion.php");
+            //conexionIniciarSesion.Conexion("iniciarSesion.php");
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "iniciarSesion.php");
 
             Usuario returnedUsuario = null;
 
             try{
-                conexionIniciarSesion.post.setEntity(new UrlEncodedFormEntity(datosUsuario));
-                HttpResponse httpResponse = conexionIniciarSesion.client.execute(conexionIniciarSesion.post);
+                //conexionIniciarSesion.post.setEntity(new UrlEncodedFormEntity(datosUsuario));
+                //HttpResponse httpResponse = conexionIniciarSesion.client.execute(conexionIniciarSesion.post);
+                post.setEntity(new UrlEncodedFormEntity(datosUsuario));
+                HttpResponse httpResponse = client.execute(post);
 
                 HttpEntity entity = httpResponse.getEntity();
                 String result = EntityUtils.toString(entity);
@@ -62,15 +83,11 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
 
                 if(jObject.length()== 0){
                     returnedUsuario = null;
+                    Toast.makeText(context,"error",Toast.LENGTH_LONG).show();
                 }else{
-                    int respuesta = jObject.getInt("success");
-                    if(respuesta == 1)
-                    {
-                        returnedUsuario = new Usuario(usuario.email,usuario.contrasenia);
-                    }else
-                    {
-                        returnedUsuario = null;
-                    }
+                    String email = jObject.getString("correo");
+//                    Toast.makeText(context,email,Toast.LENGTH_LONG).show();
+                    returnedUsuario = new Usuario(usuario.email,usuario.contrasenia);
                 }
 
             }catch(Exception e){
@@ -82,7 +99,8 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
 
         @Override
         protected void onPostExecute(Usuario returnedUser) {
-            conexionIniciarSesion.progressDialog.dismiss();
+            //conexionIniciarSesion.progressDialog.dismiss();
+            progressDialog.dismiss();
             userCallback.done(returnedUser);
             super.onPostExecute(returnedUser);
         }

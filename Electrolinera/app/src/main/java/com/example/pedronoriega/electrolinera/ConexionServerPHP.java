@@ -16,7 +16,7 @@ import org.apache.http.params.HttpParams;
 public class ConexionServerPHP {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://www.pruebitas-cfe.site40.net/";
+    public static final String SERVER_ADDRESS = "http://www.envamapa.site11.com/Servicios/";
     public String nombreServicio = "";
     HttpParams httpRequestParams;
     HttpClient client;

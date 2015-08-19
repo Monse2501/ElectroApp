@@ -8,7 +8,7 @@
     tools:context="com.example.pedronoriega.electrolinera.IniciarSesion">
 
     <EditText
-        android:text="@string/UsuarioLogin"
+        android:hint="@string/UsuarioLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etCorreo"
@@ -18,14 +18,14 @@
         />
 
     <EditText
-        android:text="@string/ContraseniaLogin"
+        android:hint="@string/ContraseniaLogin"
         android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etContrasenia"
         android:gravity="center"
         android:singleLine="true"
-        android:inputType="text"
+        android:password="true"
         />
 
     <Button

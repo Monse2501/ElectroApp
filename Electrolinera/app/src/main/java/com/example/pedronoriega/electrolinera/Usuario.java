@@ -27,7 +27,7 @@ public class Usuario {
 		this.auto = auto;
 	}
 
-	public Usuario(String contrasenia, String email) {
+	public Usuario(String email, String contrasenia) {
 		this.contrasenia = contrasenia;
 		this.email = email;
 	}

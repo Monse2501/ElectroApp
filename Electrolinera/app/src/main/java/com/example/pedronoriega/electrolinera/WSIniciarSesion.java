@@ -25,7 +25,7 @@ public class WSIniciarSesion { //clase para conexion con el servicio php iniciar
     //ConexionServerPHP conexionIniciarSesion;
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://www.monsesita-cfe.net84.net/";
+    public static final String SERVER_ADDRESS = "http://www.monsesita-cfe.net84.net/Servicios/";
     public String nombreServicio = "";
     Context context;
 

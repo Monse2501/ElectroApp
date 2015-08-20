@@ -7,9 +7,65 @@
     android:orientation="vertical"
     tools:context="com.example.pedronoriega.electrolinera.Registro">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="@string/NombreUsuario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etNombre"/>
+
+    <EditText
+        android:hint="@string/ApellidoPaterno"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etApellidoPaterno"/>
+
+    <EditText
+        android:hint="@string/ApellidoMaterno"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etApellidoMaterno"/>
+
+    <EditText
+        android:hint="@string/CorreoRegistro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etCorreo"/>
+
+    <EditText
+        android:hint="@string/ContraseniaRegistro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etContrasenia"/>
+
+    <EditText
+        android:hint="@string/RepetirContraseniaRegistro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etRepetirContrasenia"/>
+
+    <EditText
+        android:hint="@string/FechaNacimientoRegistro"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/etFechaNacimiento"/>
+
+    <EditText
+        android:hint="@string/GeneroRegistro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etGenero"/>
+
+    <EditText
+        android:hint="@string/EstadoRegistro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEstado"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Registrarme"
+        android:id="@+id/btnRegistrarme" />
 
 </LinearLayout>

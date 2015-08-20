@@ -40,25 +40,25 @@ public class WSCrearCuenta {
         //conexionIniciarSesion = new ConexionServerPHP(context);
     }
 
-    public void iniciarSesionInBackground(Usuario usuario, GetUserCallback userCallback){
+    public void crearCuentaInBackground(Usuario usuario, GetUserCallback userCallback){
         //conexionIniciarSesion.progressDialog.show();
         progressDialog.show();
-        new iniciarSesionAsyncTask(usuario, userCallback).execute();
+        new crearCuentaAsyncTask(usuario, userCallback).execute();
 
     }
 
-    public class iniciarSesionAsyncTask extends AsyncTask<Void, Void, Usuario>
+    public class crearCuentaAsyncTask extends AsyncTask<Void, Void, Void>
     {
         Usuario usuario;
         GetUserCallback userCallback;
 
-        public iniciarSesionAsyncTask(Usuario usuario, GetUserCallback callback){
+        public crearCuentaAsyncTask(Usuario usuario, GetUserCallback callback){
             this.usuario = usuario;
             this.userCallback = callback;
         }
 
         @Override
-        protected Usuario doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> datosUsuario = new ArrayList<>();
             datosUsuario.add(new BasicNameValuePair("email", usuario.email));
             datosUsuario.add(new BasicNameValuePair("contrasena", usuario.contrasenia));
@@ -68,7 +68,7 @@ public class WSCrearCuenta {
             datosUsuario.add(new BasicNameValuePair("genero", usuario.genero));
             datosUsuario.add(new BasicNameValuePair("edad", usuario.edad + ""));
             datosUsuario.add(new BasicNameValuePair("Estado_idEstado", usuario.estado));
-            datosUsuario.add(new BasicNameValuePair("Fotografia_idFotografia", usuario.estado));
+            //datosUsuario.add(new BasicNameValuePair("Fotografia_idFotografia", null));
             //conexionIniciarSesion.Conexion("iniciarSesion.php");
 
             HttpParams httpRequestParams = new BasicHttpParams();
@@ -77,40 +77,27 @@ public class WSCrearCuenta {
             HttpClient client = new DefaultHttpClient(httpRequestParams);
             HttpPost post = new HttpPost(SERVER_ADDRESS + "crearCuenta.php");
 
-            Usuario returnedUsuario = null;
 
             try{
                 //conexionIniciarSesion.post.setEntity(new UrlEncodedFormEntity(datosUsuario));
                 //HttpResponse httpResponse = conexionIniciarSesion.client.execute(conexionIniciarSesion.post);
                 post.setEntity(new UrlEncodedFormEntity(datosUsuario));
-                HttpResponse httpResponse = client.execute(post);
-
-                HttpEntity entity = httpResponse.getEntity();
-                String result = EntityUtils.toString(entity);
-                JSONObject jObject = new JSONObject(result);
-
-                if(jObject.length()== 0){
-                    returnedUsuario = null;
-                    //Toast.makeText(context,"error",Toast.LENGTH_LONG).show();
-                }else{
-                    String email = jObject.getString("email");
-//                    Toast.makeText(context,email,Toast.LENGTH_LONG).show();
-                    returnedUsuario = new Usuario(email,usuario.contrasenia);
-                }
+                client.execute(post);
 
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-            return returnedUsuario;
+            return null;
+
         }
 
         @Override
-        protected void onPostExecute(Usuario returnedUser) {
+        protected void onPostExecute(Void aVoid) {
             //conexionIniciarSesion.progressDialog.dismiss();
             progressDialog.dismiss();
-            userCallback.done(returnedUser);
-            super.onPostExecute(returnedUser);
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
         }
 
 

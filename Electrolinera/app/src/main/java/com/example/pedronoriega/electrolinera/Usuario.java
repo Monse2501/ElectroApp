@@ -7,24 +7,20 @@ public class Usuario {
 	String genero;			//Género del usuario
 	int edad;				//Edad del usuario
 	String estado;			//Estado donde se encuentra el usuario
-	Fotografia fotografia;	//Guarda la información de la fotografía del usuario
+	//Fotografia fotografia;	//Guarda la información de la fotografía del usuario
 	String contrasenia;		//Contraseña del usuario
 	String email;			//Email del usuario
-	String tipoUsuario;		//Tipo de usuario (Arquitecto, Neo, Morpheo, Noticias, Cliente)
-	Automovil auto;			//Automóviles que posee el usuario
 
-	public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String genero, int edad, String estado, Fotografia fotografia, String contrasenia, String email, String tipoUsuario, Automovil auto) {
+	public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String genero, int edad, String estado, String contrasenia, String email) {
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
 		this.genero = genero;
 		this.edad = edad;
 		this.estado = estado;
-		this.fotografia = fotografia;
+		//this.fotografia = fotografia;
 		this.contrasenia = contrasenia;
 		this.email = email;
-		this.tipoUsuario = tipoUsuario;
-		this.auto = auto;
 	}
 
 	public Usuario(String email, String contrasenia) {
@@ -67,9 +63,9 @@ public class Usuario {
 	}
 	
 	//Método para asignar la información de una fotografía de usuario
-	public void setFotografia(Fotografia fotografia){
+	/*public void setFotografia(Fotografia fotografia){
 		this.fotografia = fotografia;
-	}
+	}*/
 	
 	//Método para asignar una contraseña al usuario
 	public void setContrasenia(String contrasenia){
@@ -80,16 +76,7 @@ public class Usuario {
 	public void setEmail(String email){
 		this.email = email;
 	}
-	
-	//Método para asignar el tipo de usuario
-	public void setTipoUsuario(String tipoUsuario){
-		this.tipoUsuario = tipoUsuario;
-	}
-	
-	//Método para asignar los autos al usuario
-	public void setAutomovil(Automovil auto){
-		this.auto = auto;
-	}
+
 	
 	/******************************************************************************/
 	/********** Métodos para consulta de la información de los usuarios ***********/
@@ -126,9 +113,9 @@ public class Usuario {
 	}
 	
 	//Método para obtener la informacion de la fotografía del usuario
-	public Fotografia getFotografia(){
+	/*public Fotografia getFotografia(){
 		return fotografia;
-	}
+	}*/
 	
 	//Método para obtener la contraseña del usuario
 	public String getContrasenia(){
@@ -139,9 +126,5 @@ public class Usuario {
 	public String getEmail(){
 		return email;
 	}
-	
-	//Método para obtener los automóviles del usuario
-	public Automovil getAutomovil(){
-		return auto;
-	}
+
 }

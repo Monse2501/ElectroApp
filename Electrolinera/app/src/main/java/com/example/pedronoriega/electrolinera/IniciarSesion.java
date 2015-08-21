@@ -69,7 +69,9 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     }
 
     private void logUserIn(Usuario returnedUser){
-
-        startActivity(new Intent(this,MainActivity.class));
+        Intent i = new Intent(this, VerPerfil.class);
+        i.putExtra("email",etcorreo.getText().toString());
+        i.putExtra("contrasenia",etcontrasenia.getText().toString());
+        startActivity(i);
     }
 }

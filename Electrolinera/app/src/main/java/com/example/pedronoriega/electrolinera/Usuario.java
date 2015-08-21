@@ -28,6 +28,16 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public Usuario(String email, String nombre, String apellidoPaterno, String apellidoMaterno, String genero, int edad, String estado) {
+		this.email = email;
+		this.nombre = nombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.genero = genero;
+		this.edad = edad;
+		this.estado = estado;
+	}
+
 	/******************************************************************************/
 	/****** Métodos para agregar o modificar la información de los usuarios *******/
 	/******************************************************************************/

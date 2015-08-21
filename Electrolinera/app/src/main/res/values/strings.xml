@@ -18,6 +18,10 @@
     <string name="FechaNacimientoRegistro">Fecha de nacimiento</string>
     <string name="GeneroRegistro">Género</string>
     <string name="EstadoRegistro">Estado</string>
+    <string name="btnRegistrarme">Registrarme</string>
+
+    <!--Cadenas para la Pantallas de Ver perfil -->
+    <string name="btnModificarPerfil">Modificar</string>
 
     <!--Cadenas para la Pantalla de Recuperar contraseña-->
     <string name="ContraseniaAnterior">Contraseña anterior</string>
@@ -31,4 +35,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_recuperar_contrasenia">RecuperarContrasenia</string>
+    <string name="title_activity_ver_perfil">VerPerfil</string>
+    <string name="title_activity_modificar_perfil">ModificarPerfil</string>
 </resources>

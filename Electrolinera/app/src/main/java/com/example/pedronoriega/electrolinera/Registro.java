@@ -82,8 +82,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
                 String repetirContrasenia = etRepetirContrasenia.getText().toString();
                 String estado = etEstado.getText().toString();
                 String genero = etGenero.getText().toString();
-                if(contrasenia != repetirContrasenia)
+                if(contrasenia.equals(repetirContrasenia))
                 {
+                    Usuario usuario = new Usuario(nombre,apellidoPaterno,apellidoMaterno,genero,edad,estado,contrasenia,email);
+                    registerUser(usuario);
+                }else{
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Registro.this);
                     dialogBuilder.setMessage("La contraseña no coincide");
                     dialogBuilder.setPositiveButton("Ok", null);
@@ -91,9 +94,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
 
                     etContrasenia.setText("");
                     etRepetirContrasenia.setText("");
-                }else{
-                    Usuario usuario = new Usuario(nombre,apellidoPaterno,apellidoMaterno,genero,edad,estado,contrasenia,email);
-                    registerUser(usuario);
                 }
 
                 break;
@@ -105,7 +105,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         wsCrearCuenta.crearCuentaInBackground(usuario, new GetUserCallback() {
             @Override
             public void done(Usuario returnedUser) {
-                startActivity(new Intent(Registro.this, MainActivity.class));
+                Intent i = new Intent(Registro.this, MainActivity.class);
+                startActivity(i);
             }
         });
     }

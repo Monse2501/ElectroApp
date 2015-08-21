@@ -42,4 +42,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etEstado"/>
+
+    <Button
+        android:text="@string/btnModificarPerfil"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnModificar"
+        />
 </LinearLayout>

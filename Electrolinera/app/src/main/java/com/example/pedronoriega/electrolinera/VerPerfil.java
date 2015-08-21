@@ -54,7 +54,7 @@ public class VerPerfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(VerPerfil.this, ModificarPerfil.class);
-                i.putExtra("correo",correo);
+                i.putExtra("correo", correo);
                 i.putExtra("nombre",nombre);
                 i.putExtra("aPat",apellidoPaterno);
                 i.putExtra("aMat",apellidoMaterno);
@@ -92,9 +92,5 @@ public class VerPerfil extends AppCompatActivity {
                 etEstado.setText(estado);
             }
         });
-    }
-
-    private void verEditarPerfil(Usuario usuario){
-
     }
 }

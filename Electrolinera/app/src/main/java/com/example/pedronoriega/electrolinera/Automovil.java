@@ -3,12 +3,12 @@ package com.example.pedronoriega.electrolinera;
 public class Automovil {
 	String modelo; 	//Atributo que guarda el modelo del auto
 	String tipo;	//Tipo del auto (híbrido o eléctrico)
-	String marca;	//Marca del automóvil
+	int marca;	//Marca del automóvil
 	int anio;		//Año del automóvil
 	Usuario usuario;//Guarda al dueño del automóvil
 	
 	//Constructor de la clase
-	public Automovil(String modelo, String tipo, String marca, int anio, Usuario usuario) {
+	public Automovil(String modelo, String tipo, int marca, int anio, Usuario usuario) {
 		this.modelo = modelo;
 		this.tipo = tipo;
 		this.marca = marca;
@@ -38,7 +38,7 @@ public class Automovil {
 	}
 	
 	//Método para asignar la marca del auto
-	public void setMarca(String marca){
+	public void setMarca(int marca){
 		this.marca = marca;
 	}
 	
@@ -67,7 +67,7 @@ public class Automovil {
 	}
 	
 	//Método para obtener la marca del auto
-	public String getMarca(){
+	public int getMarca(){
 		return marca;
 	}
 	

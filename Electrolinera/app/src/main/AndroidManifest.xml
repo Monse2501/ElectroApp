@@ -46,6 +46,10 @@
             android:name=".AgregarAutomovil"
             android:label="@string/title_activity_agregar_automovil" >
         </activity>
+        <activity
+            android:name=".VerAutomovil"
+            android:label="@string/title_activity_ver_automovil" >
+        </activity>
     </application>
 
 </manifest>

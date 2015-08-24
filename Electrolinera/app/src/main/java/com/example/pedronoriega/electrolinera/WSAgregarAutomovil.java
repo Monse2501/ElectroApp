@@ -1,5 +1,8 @@
 package com.example.pedronoriega.electrolinera;
 
+/**
+ * Created by Pedro Noriega on 24/08/2015.
+ */
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -23,68 +26,60 @@ import java.util.ArrayList;
 /**
  * Created by Pedro Noriega on 20/08/2015.
  */
-public class WSCrearCuenta {
+public class WSAgregarAutomovil {
     //ConexionServerPHP conexionIniciarSesion;
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
     public static final String SERVER_ADDRESS = "http://www.monsesita-cfe.net84.net/Servicios/";
-    public String nombreServicio = "";
-    Context context;
 
-    public WSCrearCuenta(Context context)
+    public WSAgregarAutomovil(Context context)
     {
         progressDialog = new ProgressDialog(context);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Processing");
         progressDialog.setMessage("Please wait...");
-        //conexionIniciarSesion = new ConexionServerPHP(context);
     }
 
-    public void crearCuentaInBackground(Usuario usuario, GetUserCallback userCallback){
+    public void agregarAutomovilInBackground(Usuario usuario, Automovil automovil, GetAutomovilCallback automovilCallback){
         //conexionIniciarSesion.progressDialog.show();
         progressDialog.show();
-        new crearCuentaAsyncTask(usuario, userCallback).execute();
+        new agregarAutomovilAsyncTask(usuario,automovil, automovilCallback).execute();
 
     }
 
-    public class crearCuentaAsyncTask extends AsyncTask<Void, Void, Void>
+    public class agregarAutomovilAsyncTask extends AsyncTask<Void, Void, Void>
     {
         Usuario usuario;
-        GetUserCallback userCallback;
+        Automovil automovil;
+        GetAutomovilCallback automovilCallback;
 
-        public crearCuentaAsyncTask(Usuario usuario, GetUserCallback callback){
+        public agregarAutomovilAsyncTask(Usuario usuario,Automovil automovil, GetAutomovilCallback callback){
             this.usuario = usuario;
-            this.userCallback = callback;
+            this.automovil = automovil;
+            this.automovilCallback = callback;
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-            String tipoDeUsuario = "4";
-            int tipoUsuario = Integer.parseInt(tipoDeUsuario);
-            ArrayList<NameValuePair> datosUsuario = new ArrayList<>();
-            datosUsuario.add(new BasicNameValuePair("email", usuario.email));
-            datosUsuario.add(new BasicNameValuePair("contrasena", usuario.contrasenia));
-            datosUsuario.add(new BasicNameValuePair("nombre", usuario.nombre));
-            datosUsuario.add(new BasicNameValuePair("apPat", usuario.apellidoPaterno));
-            datosUsuario.add(new BasicNameValuePair("apMat", usuario.apellidoMaterno));
-            datosUsuario.add(new BasicNameValuePair("genero", usuario.genero));
-            datosUsuario.add(new BasicNameValuePair("edad", usuario.edad + ""));
-            datosUsuario.add(new BasicNameValuePair("Estado_idEstado", usuario.estado));
-            datosUsuario.add(new BasicNameValuePair("tipoUsuario", tipoUsuario+""));
-            //datosUsuario.add(new BasicNameValuePair("Fotografia_idFotografia", null));
-            //conexionIniciarSesion.Conexion("iniciarSesion.php");
+            ArrayList<NameValuePair> datosAutomovil = new ArrayList<>();
+            datosAutomovil.add(new BasicNameValuePair("email", usuario.email));
+            datosAutomovil.add(new BasicNameValuePair("anio", automovil.anio+""));
+            datosAutomovil.add(new BasicNameValuePair("modelo", automovil.modelo));
+            datosAutomovil.add(new BasicNameValuePair("tipoCoche", automovil.tipo));
+            datosAutomovil.add(new BasicNameValuePair("marca", automovil.marca+""));
+
 
             HttpParams httpRequestParams = new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
             HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
             HttpClient client = new DefaultHttpClient(httpRequestParams);
-            HttpPost post = new HttpPost(SERVER_ADDRESS + "crearCuenta.php");
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "agregarAutomovil.php");
 
 
             try{
                 //conexionIniciarSesion.post.setEntity(new UrlEncodedFormEntity(datosUsuario));
                 //HttpResponse httpResponse = conexionIniciarSesion.client.execute(conexionIniciarSesion.post);
-                post.setEntity(new UrlEncodedFormEntity(datosUsuario));
+                post.setEntity(new UrlEncodedFormEntity(datosAutomovil));
                 client.execute(post);
 
             }catch(Exception e){
@@ -99,7 +94,7 @@ public class WSCrearCuenta {
         protected void onPostExecute(Void aVoid) {
             //conexionIniciarSesion.progressDialog.dismiss();
             progressDialog.dismiss();
-            userCallback.done(null);
+            automovilCallback.done(null);
             super.onPostExecute(aVoid);
         }
 

@@ -1,5 +1,7 @@
 package com.example.pedronoriega.electrolinera;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,13 +18,17 @@ public class AgregarAutomovil extends AppCompatActivity {
     EditText etMarca;
     Button btnAgregar;
 
+    String email;
+    String contrasenia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_automovil);
 
         Bundle bundle = getIntent().getExtras();  //Recuperamos los datos de la actividad de iniciar sesion
-        String email = bundle.getString("email"); //Guardamos el correo
+        email = bundle.getString("email"); //Guardamos el correo
+        contrasenia = bundle.getString("contrasenia"); //Guardamos la contraseña
 
         etAnio = (EditText)findViewById(R.id.etAnio);
         etModelo = (EditText)findViewById(R.id.etModelo);
@@ -33,30 +39,33 @@ public class AgregarAutomovil extends AppCompatActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int anio = Integer.parseInt(etAnio.getText().toString());
+                String modelo = etModelo.getText().toString();
+                String tipoAuto = etTipoAuto.getText().toString();
+                int marca = Integer.parseInt(etMarca.getText().toString());
+
+                Usuario usuario = new Usuario(email,contrasenia);
+
+                Automovil automovil = new Automovil(modelo,tipoAuto,marca,anio,usuario);
+                agregarAutomovil(usuario,automovil);
 
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_agregar_automovil, menu);
-        return true;
+    public void agregarAutomovil(Usuario usuario,Automovil automovil)
+    {
+        WSAgregarAutomovil wsAgregarAutomovil = new WSAgregarAutomovil(this);
+        wsAgregarAutomovil.agregarAutomovilInBackground(usuario, automovil, new GetAutomovilCallback() {
+            @Override
+            public void done(Automovil returnedAutomovil) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(AgregarAutomovil.this);
+                dialogBuilder.setMessage("La operación se ha realizado correctamente");
+                dialogBuilder.setPositiveButton("Ok", null);
+                dialogBuilder.show();
+                startActivity(new Intent(AgregarAutomovil.this,VerAutomovil.class));
+            }
+        });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

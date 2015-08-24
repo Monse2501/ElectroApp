@@ -89,6 +89,7 @@ public class VerPerfil extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(VerPerfil.this, AgregarAutomovil.class);
                 i.putExtra("email", email);
+                i.putExtra("contrasenia", contrasenia);
                 startActivity(i);
             }
         });

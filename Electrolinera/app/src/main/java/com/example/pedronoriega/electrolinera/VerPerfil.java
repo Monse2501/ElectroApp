@@ -19,6 +19,11 @@ public class VerPerfil extends AppCompatActivity {
     TextView etGenero;
     TextView etEstado;
     Button btnModificar;
+    Button btnModificarContrasenia;
+    Button btnAgregarAuto;
+
+    String email;
+    String contrasenia;
 
     String nombre;
     String apellidoPaterno;
@@ -35,8 +40,11 @@ public class VerPerfil extends AppCompatActivity {
         setContentView(R.layout.activity_ver_perfil);
 
         Bundle bundle = getIntent().getExtras();  //Recuperamos los datos de la actividad de iniciar sesion
-        String email = bundle.getString("email"); //Guardamos el correo
-        String contrasenia = bundle.getString("contrasenia"); //Guardamos la contrasenia
+        email = bundle.getString("email"); //Guardamos el correo
+        contrasenia = bundle.getString("contrasenia"); //Guardamos la contrasenia
+        System.out.println(email);
+        System.out.println(contrasenia);
+
 
         etNombre = (TextView)findViewById(R.id.tvNombre);
         etApellidoPaterno = (TextView)findViewById(R.id.tvApellidoPaterno);
@@ -46,6 +54,8 @@ public class VerPerfil extends AppCompatActivity {
         etGenero = (TextView)findViewById(R.id.tvGenero);
         etEstado = (TextView)findViewById(R.id.tvEstado);
         btnModificar = (Button)findViewById(R.id.btnModificar);
+        btnModificarContrasenia = (Button)findViewById(R.id.btnCambiarContrasenia);
+        btnAgregarAuto = (Button)findViewById(R.id.btnAgregarAutomovil);
 
         Usuario usuario = new Usuario(email,contrasenia);
         verMiPerfil(usuario);
@@ -54,13 +64,31 @@ public class VerPerfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(VerPerfil.this, ModificarPerfil.class);
-                i.putExtra("correo", correo);
-                i.putExtra("nombre",nombre);
-                i.putExtra("aPat",apellidoPaterno);
-                i.putExtra("aMat",apellidoMaterno);
-                i.putExtra("edad",fechaNacimiento);
-                i.putExtra("genero",genero);
-                i.putExtra("estado",estado);
+                i.putExtra("email", correo);
+                i.putExtra("nombre", nombre);
+                i.putExtra("aPat", apellidoPaterno);
+                i.putExtra("aMat", apellidoMaterno);
+                i.putExtra("edad", fechaNacimiento);
+                i.putExtra("genero", genero);
+                i.putExtra("estado", estado);
+                startActivity(i);
+            }
+        });
+
+        btnModificarContrasenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(VerPerfil.this, CambiarContrasena.class);
+                i.putExtra("email", email);
+                startActivity(i);
+            }
+        });
+
+        btnAgregarAuto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(VerPerfil.this, AgregarAutomovil.class);
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });

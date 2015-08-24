@@ -38,6 +38,14 @@
             android:name=".ModificarPerfil"
             android:label="@string/title_activity_modificar_perfil" >
         </activity>
+        <activity
+            android:name=".CambiarContrasena"
+            android:label="@string/title_activity_cambiar_contrasena" >
+        </activity>
+        <activity
+            android:name=".AgregarAutomovil"
+            android:label="@string/title_activity_agregar_automovil" >
+        </activity>
     </application>
 
 </manifest>

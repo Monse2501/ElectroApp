@@ -43,7 +43,7 @@ public class ModificarPerfil extends AppCompatActivity {
         btnModificar = (Button)findViewById(R.id.btnModificar);
 
         Bundle bundle = getIntent().getExtras();  //Recuperamos los datos de la actividad de iniciar sesion
-        correo = bundle.getString("correo");
+        correo = bundle.getString("email");
         String bnombre = bundle.getString("nombre");
         String bapellidoPaterno = bundle.getString("aPat");
         String bapellidoMaterno = bundle.getString("aMat");

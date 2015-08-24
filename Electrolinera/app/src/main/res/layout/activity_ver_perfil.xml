@@ -57,5 +57,19 @@
         android:id="@+id/btnModificar"
         />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCambiarContrasenia"
+        android:text="@string/btnModificarContrasenia"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAgregarAutomovil"
+        android:text="@string/btnAgregarAuto"
+        />
+
 
 </LinearLayout>
